@@ -1,0 +1,29 @@
+.staatliches-regular {
+  font-family: 'Staatliches', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.red-text {
+  color: red;
+}
+
+#name {
+  font-size: 28pt;
+  color: blue;
+}
+
+body {
+  background-color: bisque;
+  text-align: center;
+  font-family: 'Staatliches', sans-serif, cursive;
+}
+
+h1 {
+  font-size: 50pt;
+  margin-bottom: 134px;
+}
+
+p {
+  font-size: 20pt;
+}
