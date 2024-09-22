@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS modules | Plain Text Area</title>
+    <style>
+      .container {
+        display: flex;
+      }
+      .box {
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Text Conversion: Plain &lt;-&gt; Coded</h1>
+    <div class="container">
+      <div class="box">
+        <span>Encode your text:<br /></span>
+        <textarea id="plainTextArea"></textarea>
+        <div id="codedText">&nbsp;</div>
+        <script src="main.js" type="module"></script>
+      </div>
+      <div class="box">
+        <span>Decode your text:<br /></span>
+        <textarea id="codedTextArea"> </textarea>
+        <div id="plainText"></div>
+        <div id="codedText">&nbsp;</div>
+      </div>
+    </div>
+  </body>
+</html>
