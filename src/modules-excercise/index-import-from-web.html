@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Motion One example</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <style>
+      body {
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+      }
+
+      #box {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        background-color: pink;
+      }
+    </style>
+    <div id="box"></div>
+  </body>
+  <!-- You will probably pull this javascript out into its own file -->
+  <script type="module">
+    import { animate } from 'https://cdn.skypack.dev/motion'
+
+    animate('#box', { x: 100, rotate: 45 }, { duration: 0.5 })
+  </script>
+  <div id="box">
+    <button id="startButton">Start</button>
+  </div>
+  <script type="module">
+    import * as Tone from 'https://cdn.skypack.dev/tone'
+
+    //create a synth and connect it to the main output (your speakers)
+    const synth = new Tone.Synth().toDestination()
+
+    //play a middle 'C' for the duration of an 8th note
+    synth.triggerAttackRelease('D4', '8n')
+
+    const button = document.querySelector('#startButton')
+    button.addEventListener('click', () => {
+      Tone.start()
+
+      const now = Tone.now() + 1
+      synth.triggerAttackRelease('C4', '1n', now)
+      synth.triggerAttackRelease('E4', '1n', now + 0.5)
+      synth.triggerAttackRelease('G4', '1n', now + 1)
+    })
+  </script>
+</html>
