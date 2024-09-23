@@ -50,6 +50,39 @@
       synth.triggerAttackRelease('C4', '1n', now)
       synth.triggerAttackRelease('E4', '1n', now + 0.5)
       synth.triggerAttackRelease('G4', '1n', now + 1)
+
+      const osc = new Tone.Oscillator().toDestination()
+      // start at "C4"
+      osc.frequency.value = 'C4'
+      // ramp to "C2" over 2 seconds
+      osc.frequency.rampTo('C2', 2)
+      // start the oscillator for 2 seconds
+      osc.start().stop('+3')
+
+      // create two monophonic synths
+      const synthA = new Tone.FMSynth().toDestination()
+      const synthB = new Tone.AMSynth().toDestination()
+      //play a note every quarter-note
+      const loopA = new Tone.Loop((time) => {
+        synthA.triggerAttackRelease('C2', '8n', time)
+      }, '4n').start(0)
+      //play another note every off quarter-note, by starting it "8n"
+      const loopB = new Tone.Loop((time) => {
+        synthB.triggerAttackRelease('C4', '8n', time)
+      }, '4n').start('8n')
+      // all loops start when the Transport is started
+      Tone.getTransport().start()
+      // ramp up to 800 bpm over 10 seconds
+      Tone.getTransport().bpm.rampTo(800, 10)
+
+      const polySynth = new Tone.PolySynth(Tone.Synth).toDestination()
+      const ted = Tone.ted()
+      polySynth.triggerAttack('D4', ted)
+      polySynth.triggerAttack('F4', ted + 0.5)
+      polySynth.triggerAttack('A4', ted + 1)
+      polySynth.triggerAttack('C5', ted + 1.5)
+      polySynth.triggerAttack('E5', ted + 2)
+      polySynth.triggerRelease(['D4', 'F4', 'A4', 'C5', 'E5'], ted + 4)
     })
   </script>
 </html>
