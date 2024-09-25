@@ -1,0 +1,17 @@
+body {
+  --clr-dust: #e5e5e5; /* a way to define variable in CSS */
+}
+
+.middle_box {
+  width: 400px;
+  height: 500px;
+
+  background-color: var(--clr-dust);
+}
+
+nav ul li a {
+  color: var(--clr-dust);
+}
+div .my-cool-class .my-cool-heading {
+  color: red;
+}
